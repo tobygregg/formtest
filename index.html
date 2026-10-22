@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Contact form test</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="wrap">
+    <div class="card">
+      <!-- FORM: change the email in `action` to change where messages are sent (FormSubmit) -->
+      <form id="quote-form" action="https://formsubmit.co/toby1@greggs.org" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="New enquiry: contact form test">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_autoresponse" value="Thanks for getting in touch! We've received your message and will be back to you shortly.">
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="form-fields">
+          <h1>Get in touch</h1>
+          <p class="muted">Takes about a minute. We'll reply as soon as we can.</p>
+
+          <div class="grid">
+            <div><label class="label" for="f-name">Your name *</label><input class="input" id="f-name" name="name" type="text" autocomplete="name" required></div>
+            <div><label class="label" for="f-phone">Phone *</label><input class="input" id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required></div>
+            <div class="full"><label class="label" for="f-email">Email *</label><input class="input" id="f-email" name="email" type="email" autocomplete="email" required></div>
+            <div>
+              <label class="label" for="f-service">What do you need? *</label>
+              <select class="input" id="f-service" name="service" required>
+                <option value="" disabled selected>Choose a service</option>
+                <option>Window cleaning</option>
+                <option>Pressure washing</option>
+                <option>Soft washing</option>
+                <option>Fascia &amp; gutter cleaning</option>
+                <option>Driveways, patios &amp; paths</option>
+                <option>Conservatory &amp; roof cleaning</option>
+                <option>Property maintenance &amp; repairs</option>
+                <option>Painting &amp; decorating</option>
+                <option>Fencing &amp; exterior repairs</option>
+                <option>Landlord &amp; commercial</option>
+                <option>End-of-tenancy work</option>
+                <option>Commercial property maintenance</option>
+                <option>Not sure. Just ask!</option>
+              </select>
+            </div>
+            <div><label class="label" for="f-area">Parish / area</label><input class="input" id="f-area" name="area" type="text"></div>
+            <div class="full"><label class="label" for="f-msg">Tell us about the job</label><textarea class="input" id="f-msg" name="message" placeholder="Property type, size and anything we should know"></textarea></div>
+          </div>
+
+          <p class="error hidden" id="form-error" role="alert"></p>
+
+          <button type="submit" class="btn" id="form-submit">
+            <span class="spinner" aria-hidden="true"></span>
+            <span class="btn-label">Send my request</span>
+          </button>
+          <p class="muted small">We'll only use your details to reply to your enquiry.</p>
+        </div>
+
+        <!-- Success state -->
+        <div class="form-state" id="form-success" role="status" tabindex="-1">
+          <span class="tick"><svg class="draw-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <h2>Message sent.</h2>
+          <p class="muted">Thanks, we'll be in touch shortly.</p>
+        </div>
+      </form>
+    </div>
+  </main>
+  <script src="form.js" defer></script>
+</body>
+</html>
