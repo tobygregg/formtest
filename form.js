@@ -37,14 +37,17 @@
           body: new FormData(form),
         });
         const data = await res.json().catch(() => ({}));
-        if (!res.ok || data.success === 'false' || data.success === false) throw new Error(data.message || 'Request failed');
+        console.log('FormSubmit response:', res.status, data);
+        if (!res.ok || data.success === 'false' || data.success === false) throw new Error(data.message || ('Request failed (' + res.status + ')'));
         fields.style.display = 'none';
         ok.classList.add('show');
         ok.focus({ preventScroll: true });
         ok.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
         form.reset();
-      } catch (_) {
-        showError('Sorry, something went wrong sending that. Please try again.');
+      } catch (e2) {
+        console.error('FormSubmit error:', e2);
+        // TEST BUILD: show the real reason. Swap back to a friendly message for a live site.
+        showError('Could not send: ' + (e2 && e2.message ? e2.message : e2) + (location.protocol === 'file:' ? ' (you opened this as a file:// page. Host it or use a local server)' : ''));
       } finally {
         btn.removeAttribute('aria-busy');
         btn.disabled = false;
